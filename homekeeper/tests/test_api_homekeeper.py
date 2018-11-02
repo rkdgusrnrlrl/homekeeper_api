@@ -37,7 +37,11 @@ def test_create_many_homekeeper(client):
     resp = client.get('/api/homekeepers/')
     contents = resp.json()
 
+    print(contents['total'])
+
     assert 'list' in contents
+    assert 7 == len(contents['list'])
+    assert 11400 == contents['total']
 
 
 def save_homkeeper(client, pay_date, inout, contents, money):
